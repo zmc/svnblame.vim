@@ -8,9 +8,8 @@ function SvnBlame()
     let thisFile = expand("%")
 
     " Check that this file is actually in SVN
-    let filePath = system('dirname ' . thisFile)
-    let filePath = substitute(filePath, "\n", "", "g")
-    if !isdirectory(filePath . '/.svn')
+    let svnInfo = system('svn info ' . thisFile)
+    if v:shell_error == 1
         echohl WarningMsg | echon thisFile . " is not in SVN, cannot blame this file."
         return
     endif
