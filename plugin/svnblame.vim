@@ -69,7 +69,7 @@ function SvnBlame()
     call winrestview(childView)
 
     " Locally rebind the trigger to close the child
-    nnoremap <buffer> <silent> <C-b> :call EndSvnBlame()<CR>
+    nnoremap <buffer> <silent> <leader>b :call EndSvnBlame()<CR>
     " And also close the child if we move to another buffer 
     " (prevents having more than one blame open)
     augroup blame
@@ -86,4 +86,4 @@ function EndSvnBlame()
     autocmd! blame
 endf
 
-map <C-b> :call SvnBlame()<CR>
+map <leader>b :call SvnBlame()<CR>
